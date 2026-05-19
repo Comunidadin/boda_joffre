@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joffre &amp; Erin · 22 · 08 · 2026</title>
+  <meta name="description" content="Nos casamos. Acompáñanos a celebrar el inicio de nuestra historia juntos — 22 de agosto de 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ MUSIC PLAYER ============ -->
+  <button class="music-player" id="music-toggle" aria-label="Reproducir nuestra canción">
+    <span class="music-player__icon music-player__icon--play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </span>
+    <span class="music-player__icon music-player__icon--pause" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+    </span>
+    <span class="music-player__ring" aria-hidden="true"></span>
+    <span class="music-player__label">Nuestra canción</span>
+  </button>
+  <audio id="bgm" loop preload="auto">
+    <source src="music/nuestra-cancion.mp3" type="audio/mpeg" />
+    <source src="music/nuestra-cancion.m4a" type="audio/mp4" />
+  </audio>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="hero__ornament hero__ornament--top" aria-hidden="true">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 30 Q 60 5, 100 30 T 190 30" fill="none" stroke="currentColor" stroke-width="0.8"/>
+          <path d="M40 30 q 4 -10, 12 -8" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          <path d="M55 30 q 5 -12, 14 -7" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          <path d="M140 30 q -4 -10, -12 -8" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          <path d="M155 30 q -5 -12, -14 -7" fill="none" stroke="currentColor" stroke-width="0.6"/>
+        </svg>
+      </div>
+
+      <p class="eyebrow eyebrow--on-photo">Save the date</p>
+      <h1 class="hero__title">
+        <span class="hero__name">Joffre</span>
+        <span class="hero__amp">&amp;</span>
+        <span class="hero__name">Erin</span>
+      </h1>
+      <p class="hero__subtitle">Nos casamos y queremos celebrarlo contigo</p>
+
+      <div class="hero__date">
+        <span>22</span>
+        <span class="dot">·</span>
+        <span>08</span>
+        <span class="dot">·</span>
+        <span>2026</span>
+      </div>
+    </div>
+
+    <a href="#nuestra-cancion" class="hero__scroll" aria-label="Bajar">
+      <span>Descubre</span>
+      <svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ CANCIÓN ============ -->
+  <section class="invitation" id="nuestra-cancion">
+
+    <div class="song" aria-label="Nuestra canción">
+      <p class="eyebrow eyebrow--dark song__eyebrow">Nuestra canción</p>
+
+      <div class="player">
+        <button class="player__disc" id="song-play" aria-label="Reproducir nuestra canción">
+          <svg class="player__ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="player__ring-track" cx="60" cy="60" r="56"/>
+            <circle class="player__ring-bar"   cx="60" cy="60" r="56" id="song-progress"/>
+          </svg>
+          <span class="player__vinyl" aria-hidden="true">
+            <span class="player__groove player__groove--1"></span>
+            <span class="player__groove player__groove--2"></span>
+            <span class="player__groove player__groove--3"></span>
+            <span class="player__center"></span>
+          </span>
+          <span class="player__icon player__icon--play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="player__icon player__icon--pause" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+          </span>
+        </button>
+
+        <div class="player__info">
+          <p class="player__title">Tu Me Delatas</p>
+          <p class="player__artist">DJ Tony Pecino &nbsp;·&nbsp; ft. Pablo Dazan</p>
+          <div class="player__wave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p class="player__time">
+            <span id="song-current">0:00</span>
+            <span class="player__time-sep">/</span>
+            <span id="song-total">0:00</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="countdown" id="cuenta-regresiva">
+    <p class="eyebrow eyebrow--light">Faltan</p>
+    <div class="countdown__grid" id="countdown">
+      <div class="countdown__cell"><span class="countdown__num" data-unit="days">--</span><span class="countdown__label">días</span></div>
+      <div class="countdown__cell"><span class="countdown__num" data-unit="hours">--</span><span class="countdown__label">horas</span></div>
+      <div class="countdown__cell"><span class="countdown__num" data-unit="minutes">--</span><span class="countdown__label">minutos</span></div>
+      <div class="countdown__cell"><span class="countdown__num" data-unit="seconds">--</span><span class="countdown__label">segundos</span></div>
+    </div>
+    <p class="countdown__caption">para celebrar juntos</p>
+    <p class="countdown__target">Sábado · 22 de Agosto · 2026 · 5:00 PM</p>
+  </section>
+
+  <!-- ============ CEREMONIA + CELEBRACIÓN ============ -->
+  <section class="details" id="detalles">
+    <p class="eyebrow eyebrow--dark">El gran día</p>
+    <h2 class="section__title">Detalles del evento</h2>
+    <p class="details__venue-line">Todo en un mismo lugar — <em>Le Petit Jardin</em></p>
+
+    <div class="details__grid">
+      <article class="detail-card">
+        <div class="detail-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 6 L34 18 L34 40 L14 40 L14 18 Z M14 18 L34 18 M19 40 L19 28 L29 28 L29 40 M24 6 L24 2 M21 2 L27 2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="detail-card__kicker">Ceremonia</p>
+        <h3 class="detail-card__title">5:00 PM</h3>
+        <p class="detail-card__place">Le Petit Jardin</p>
+        <p class="detail-card__address">Te esperamos puntual para vivir<br/>juntos este momento tan especial.</p>
+        <a href="https://maps.app.goo.gl/LubiHHtfMhN7h5aM7?g_st=ic" target="_blank" rel="noopener" class="link-button">Ver en el mapa</a>
+      </article>
+
+      <div class="details__divider" aria-hidden="true">
+        <svg viewBox="0 0 30 200"><line x1="15" y1="0" x2="15" y2="200" stroke="currentColor" stroke-width="0.6" stroke-dasharray="2 6"/><circle cx="15" cy="100" r="3" fill="currentColor"/></svg>
+      </div>
+
+      <article class="detail-card">
+        <div class="detail-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M14 18 C 14 14, 18 12, 24 12 C 30 12, 34 14, 34 18 L 34 22 C 34 26, 30 28, 24 28 C 18 28, 14 26, 14 22 Z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M24 28 L 24 40 M18 40 L 30 40" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M14 18 Q 8 18, 8 22 Q 8 26, 14 26 M34 18 Q 40 18, 40 22 Q 40 26, 34 26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="detail-card__kicker">Celebración</p>
+        <h3 class="detail-card__title">6:00 PM</h3>
+        <p class="detail-card__place">Le Petit Jardin</p>
+        <p class="detail-card__address">Después de la ceremonia,<br/>celebramos en el mismo lugar.</p>
+        <a href="https://maps.app.goo.gl/LubiHHtfMhN7h5aM7?g_st=ic" target="_blank" rel="noopener" class="link-button">Ver en el mapa</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ NUESTRA HISTORIA ============ -->
+  <section class="story" id="historia">
+    <p class="eyebrow eyebrow--dark">Nuestra historia</p>
+    <h2 class="section__title">Cómo empezó todo</h2>
+    <p class="story__intro">Cada momento contigo se siente como un capítulo más de la historia que siempre quise escribir.</p>
+
+    <div class="timeline">
+      <div class="timeline__line" aria-hidden="true"></div>
+
+      <article class="timeline__item timeline__item--left">
+        <div class="timeline__dot"></div>
+        <div class="timeline__card">
+          <figure class="timeline__photo">
+            <img src="images/episodio-1.png" alt="Joffre y Erin · Capítulo I" loading="lazy" />
+          </figure>
+          <p class="timeline__date">Capítulo I</p>
+          <h3 class="timeline__title">Nos conocimos</h3>
+          <p class="timeline__text">Aquel día cualquiera que terminó cambiándolo todo. Una conversación, una risa, y supe que algo distinto empezaba.</p>
+        </div>
+      </article>
+
+      <article class="timeline__item timeline__item--right">
+        <div class="timeline__dot"></div>
+        <div class="timeline__card">
+          <figure class="timeline__photo">
+            <img src="images/episodio-2.png" alt="Joffre y Erin · Capítulo II" loading="lazy" />
+          </figure>
+          <p class="timeline__date">Capítulo II</p>
+          <h3 class="timeline__title">La primera cita</h3>
+          <p class="timeline__text">Hablamos hasta que el lugar cerró. Desde ese momento, todo cobró sentido contigo a mi lado.</p>
+        </div>
+      </article>
+
+      <article class="timeline__item timeline__item--left">
+        <div class="timeline__dot"></div>
+        <div class="timeline__card">
+          <figure class="timeline__photo">
+            <img src="images/episodio-3.png" alt="Joffre y Erin · Capítulo III" loading="lazy" />
+          </figure>
+          <p class="timeline__date">Capítulo III</p>
+          <h3 class="timeline__title">Nos enamoramos</h3>
+          <p class="timeline__text">Sin avisar, sin pedir permiso. Como pasan las cosas verdaderas — de a poco y de golpe a la vez.</p>
+        </div>
+      </article>
+
+      <article class="timeline__item timeline__item--right">
+        <div class="timeline__dot"></div>
+        <div class="timeline__card">
+          <figure class="timeline__photo">
+            <img src="images/episodio-4.png" alt="Joffre y Erin · Capítulo IV" loading="lazy" />
+          </figure>
+          <p class="timeline__date">Capítulo IV</p>
+          <h3 class="timeline__title">La propuesta</h3>
+          <p class="timeline__text">Dije que sí antes de que terminaras la pregunta. Y aquí estamos, listos para el resto de la historia.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="gallery" id="galeria">
+    <p class="eyebrow eyebrow--dark">Momentos</p>
+    <h2 class="section__title">Nuestra galería</h2>
+
+    <div class="gallery__grid">
+      <figure class="gallery__item">
+        <img src="images/gallery-1.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+      <figure class="gallery__item">
+        <img src="images/gallery-2.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+      <figure class="gallery__item">
+        <img src="images/gallery-3.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+      <figure class="gallery__item">
+        <img src="images/gallery-4.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+      <figure class="gallery__item">
+        <img src="images/gallery-5.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+      <figure class="gallery__item">
+        <img src="images/gallery-6.png" alt="Joffre y Erin" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ DRESS CODE ============ -->
+  <section class="info-grid info-grid--solo" id="informacion">
+    <article class="info-card">
+      <p class="eyebrow eyebrow--dark">Código de vestimenta</p>
+      <h2 class="info-card__title">Formal Elegante</h2>
+      <p class="info-card__text">Acompáñanos vestido con la elegancia que el día merece. Sugerimos tonos neutros y cálidos en esta paleta.</p>
+      <div class="palette">
+        <span class="swatch" style="--c:#A89368" title="Oro"></span>
+        <span class="swatch" style="--c:#6F724D" title="Oliva"></span>
+        <span class="swatch" style="--c:#2A241E" title="Café oscuro"></span>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="rsvp" id="rsvp">
+    <p class="eyebrow eyebrow--light">Confirma tu asistencia</p>
+    <h2 class="rsvp__title">¿Nos acompañas?</h2>
+    <p class="rsvp__text">Por favor confirma tu asistencia antes del <strong>22 de julio de 2026</strong>.</p>
+
+    <form class="rsvp__form" id="rsvp-form">
+      <label class="form-row__full">
+        <span>Nombre completo</span>
+        <input type="text" name="nombre" required placeholder="Tu nombre" autocomplete="name" />
+      </label>
+
+      <fieldset class="rsvp__choice">
+        <legend>¿Nos acompañarás?</legend>
+        <label class="choice">
+          <input type="radio" name="asistencia" value="Sí, ahí estaré" required />
+          <span class="choice__box">
+            <span class="choice__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="choice__title">Sí, ahí estaré</span>
+            <span class="choice__sub">Cuenten conmigo</span>
+          </span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="asistencia" value="No podré asistir" required />
+          <span class="choice__box">
+            <span class="choice__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="choice__title">No podré asistir</span>
+            <span class="choice__sub">Los acompaño en oración</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <button type="submit" class="rsvp__submit" id="rsvp-submit">Confirmar asistencia</button>
+      <p class="rsvp__success" id="rsvp-success" hidden>Gracias por confirmar. Nos vemos el 22 de agosto. ♡</p>
+      <p class="rsvp__error"   id="rsvp-error"   hidden>Hubo un problema enviando tu respuesta. Inténtalo de nuevo.</p>
+    </form>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__monogram">J <span>&amp;</span> E</div>
+    <p class="footer__names">Joffre Llerena &amp; Erin Cox</p>
+    <p class="footer__date">22 · 08 · 2026</p>
+    <p class="footer__quote">"Y vivieron felices, escribiendo cada día su propia historia."</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
