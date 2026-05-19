@@ -133,6 +133,26 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+// ---- Gallery carousel dots (mobile) ----
+const galleryGrid = document.querySelector('.gallery__grid');
+const galleryDots = document.getElementById('gallery-dots');
+
+if (galleryGrid && galleryDots) {
+  const items = galleryGrid.querySelectorAll('.gallery__item');
+  items.forEach(() => galleryDots.appendChild(document.createElement('span')));
+  const dots = galleryDots.querySelectorAll('span');
+
+  const updateActiveDot = () => {
+    const scrollLeft = galleryGrid.scrollLeft;
+    const slideWidth = galleryGrid.clientWidth * 0.86 + 12; // 86% + gap
+    const index = Math.round(scrollLeft / slideWidth);
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === Math.min(index, items.length - 1)));
+  };
+
+  dots[0]?.classList.add('is-active');
+  galleryGrid.addEventListener('scroll', () => requestAnimationFrame(updateActiveDot), { passive: true });
+}
+
 // ---- Reveal on scroll ----
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
