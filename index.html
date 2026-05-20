@@ -5,12 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joffre &amp; Erin · 22 · 08 · 2026</title>
   <meta name="description" content="Nos casamos. Acompáñanos a celebrar el inicio de nuestra historia juntos — 22 de agosto de 2026." />
+  <meta name="theme-color" content="#F8F4EB" />
+
+  <!-- ====== Open Graph / WhatsApp / Twitter preview ====== -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Joffre & Erin" />
+  <meta property="og:title"       content="Joffre & Erin · Te invitamos a nuestra boda" />
+  <meta property="og:description" content="22 · 08 · 2026 · Le Petit Jardin. Toca para abrir nuestra invitación." />
+  <meta property="og:url"         content="https://teinvitamosanuestraboda.vercel.app/" />
+  <meta property="og:image"       content="https://teinvitamosanuestraboda.vercel.app/images/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://teinvitamosanuestraboda.vercel.app/images/og-image.jpg" />
+  <meta property="og:image:type"  content="image/jpeg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt"   content="Joffre & Erin · Save the date" />
+  <meta property="og:locale"      content="es_EC" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Joffre & Erin · Te invitamos a nuestra boda" />
+  <meta name="twitter:description" content="22 · 08 · 2026 · Le Petit Jardin. Toca para abrir nuestra invitación." />
+  <meta name="twitter:image"       content="https://teinvitamosanuestraboda.vercel.app/images/og-image.jpg" />
+
+  <link rel="canonical" href="https://teinvitamosanuestraboda.vercel.app/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
-<body>
+<body class="envelope-locked">
+
+  <!-- ============ SOBRE / ENVELOPE INTRO ============ -->
+  <div class="envelope-stage" id="envelope-stage" role="dialog" aria-label="Invitación de boda Joffre y Erin">
+    <button class="envelope" id="envelope" type="button" aria-label="Abrir invitación">
+      <span class="envelope__shadow" aria-hidden="true"></span>
+
+      <span class="envelope__back" aria-hidden="true"></span>
+
+      <!-- Cuerpo del sobre (parte frontal con el sello) -->
+      <span class="envelope__front" aria-hidden="true">
+        <span class="envelope__corner envelope__corner--tl"></span>
+        <span class="envelope__corner envelope__corner--tr"></span>
+        <span class="envelope__corner envelope__corner--bl"></span>
+        <span class="envelope__corner envelope__corner--br"></span>
+
+        <span class="envelope__monogram">
+          <span class="envelope__monogram-line">Joffre</span>
+          <span class="envelope__monogram-amp">&amp;</span>
+          <span class="envelope__monogram-line">Erin</span>
+        </span>
+        <span class="envelope__date-line">22 · 08 · 2026</span>
+      </span>
+
+      <!-- Carta que sale del sobre al abrirlo -->
+      <span class="envelope__letter" aria-hidden="true">
+        <span class="envelope__letter-eyebrow">Save the date</span>
+        <span class="envelope__letter-title">Nos casamos</span>
+        <span class="envelope__letter-meta">22 · 08 · 2026</span>
+      </span>
+
+      <!-- Solapa (flap) que se abre -->
+      <span class="envelope__flap" aria-hidden="true"></span>
+
+      <!-- Sello de cera centrado en la unión solapa/cuerpo -->
+      <span class="envelope__seal" aria-hidden="true">
+        <span class="envelope__seal-mono">J<i>&amp;</i>E</span>
+      </span>
+    </button>
+
+    <p class="envelope-stage__hint" id="envelope-hint">Toca para abrir</p>
+  </div>
 
   <!-- ============ MUSIC PLAYER ============ -->
   <button class="music-player" id="music-toggle" aria-label="Reproducir nuestra canción">
@@ -129,6 +193,7 @@
   <section class="details" id="detalles">
     <p class="eyebrow eyebrow--dark">El gran día</p>
     <h2 class="section__title">Detalles del evento</h2>
+    <div class="flourish" aria-hidden="true"><span class="flourish__diamond"></span></div>
     <p class="details__venue-line">Todo en un mismo lugar — <em>Le Petit Jardin</em></p>
 
     <div class="details__grid">
@@ -164,6 +229,7 @@
   <section class="story" id="historia">
     <p class="eyebrow eyebrow--dark">Nuestra historia</p>
     <h2 class="section__title">Cómo empezó todo</h2>
+    <div class="flourish" aria-hidden="true"><span class="flourish__diamond"></span></div>
     <p class="story__intro">Cada momento contigo se siente como un capítulo más de la historia que siempre quise escribir.</p>
 
     <div class="timeline">
@@ -223,6 +289,7 @@
   <section class="gallery" id="galeria">
     <p class="eyebrow eyebrow--dark">Momentos</p>
     <h2 class="section__title">Nuestra galería</h2>
+    <div class="flourish" aria-hidden="true"><span class="flourish__diamond"></span></div>
 
     <div class="gallery__grid">
       <figure class="gallery__item">
@@ -266,6 +333,7 @@
   <section class="rsvp" id="rsvp">
     <p class="eyebrow eyebrow--light">Confirma tu asistencia</p>
     <h2 class="rsvp__title">¿Nos acompañas?</h2>
+    <div class="flourish flourish--on-photo" aria-hidden="true"><span class="flourish__diamond"></span></div>
     <p class="rsvp__text">Por favor confirma tu asistencia antes del <strong>22 de julio de 2026</strong>.</p>
 
     <form class="rsvp__form" id="rsvp-form">
@@ -312,6 +380,6 @@
     <p class="footer__quote">"Y vivieron felices, escribiendo cada día su propia historia."</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

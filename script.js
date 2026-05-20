@@ -2,6 +2,59 @@
 // J & E — Invitación de boda
 // ============================================================
 
+// ---- Sobre intro (envelope) ----
+(function envelopeIntro() {
+  const stage    = document.getElementById('envelope-stage');
+  const envelope = document.getElementById('envelope');
+  const hint     = document.getElementById('envelope-hint');
+  if (!stage || !envelope) {
+    // No envelope in DOM — nothing to do
+    return;
+  }
+
+  let isOpened = false;
+
+  function openEnvelope() {
+    if (isOpened) return;
+    isOpened = true;
+
+    envelope.classList.add('is-opening');
+    if (hint) hint.classList.add('is-hidden');
+
+    // Try to start music — this click counts as a valid user gesture
+    const bgm = document.getElementById('bgm');
+    if (bgm) {
+      bgm.play().catch(() => { /* el navegador puede bloquear; el usuario tendrá el botón */ });
+    }
+
+    // After the open animation, fade the stage and unlock the page
+    setTimeout(() => {
+      stage.classList.add('is-revealed');
+      document.body.classList.remove('envelope-locked');
+    }, 1700);
+
+    // Remove the overlay from the DOM after fade
+    setTimeout(() => { stage.remove(); }, 2700);
+  }
+
+  // Listen on BOTH the button and the whole stage as a safety net
+  envelope.addEventListener('click', openEnvelope);
+  stage.addEventListener('click', openEnvelope);
+
+  envelope.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openEnvelope();
+    }
+  });
+
+  // Touch: ensure mobile taps fire immediately
+  envelope.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    openEnvelope();
+  }, { passive: false });
+})();
+
 // ---- Cuenta regresiva ----
 const WEDDING_DATE = new Date('2026-08-22T17:00:00-05:00').getTime();
 
