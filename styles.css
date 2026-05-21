@@ -1314,7 +1314,8 @@ img { max-width: 100%; display: block; }
   font-weight: 400;
 }
 
-.rsvp__form input[type="text"] {
+.rsvp__form input[type="text"],
+.rsvp__form textarea {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.1rem;
@@ -1329,11 +1330,19 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 
-.rsvp__form input[type="text"]::placeholder {
+.rsvp__form textarea {
+  resize: vertical;
+  min-height: 2.6rem;
+  line-height: 1.5;
+}
+
+.rsvp__form input[type="text"]::placeholder,
+.rsvp__form textarea::placeholder {
   color: rgba(245,239,226,0.35);
   font-style: italic;
 }
-.rsvp__form input[type="text"]:focus { border-bottom-color: var(--gold); }
+.rsvp__form input[type="text"]:focus,
+.rsvp__form textarea:focus { border-bottom-color: var(--gold); }
 
 /* ---- Choice cards (Sí / No) ---- */
 
@@ -1577,19 +1586,31 @@ body.envelope-locked { overflow: hidden; }
   justify-content: center;
   padding: 1.5rem;
   background:
-    radial-gradient(ellipse at center, #FFFFFF 0%, #F8F4EB 65%, #EFE7D3 100%);
+    radial-gradient(ellipse 80% 60% at center, #FCF7EB 0%, #F2E9D2 50%, #D8C49A 100%);
   transition: opacity 0.9s ease, visibility 0.9s ease;
 }
 
-/* Subtle paper texture so a pure white doesn't feel flat */
+/* Paper grain so the page doesn't feel flat */
 .envelope-stage::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 25% 30%, rgba(255,255,255,0.55), transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(180,147,100,0.05), transparent 55%),
-    repeating-linear-gradient(45deg, rgba(120, 90, 50, 0.015) 0 2px, transparent 2px 4px);
+    radial-gradient(circle at 25% 30%, rgba(255,255,255,0.4), transparent 45%),
+    radial-gradient(circle at 75% 75%, rgba(180,147,100,0.10), transparent 55%),
+    repeating-linear-gradient(45deg, rgba(120, 90, 50, 0.022) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 4px);
+  pointer-events: none;
+}
+
+/* Classic invitation frame — thin gold double-rule inset from edges */
+.envelope-stage::after {
+  content: "";
+  position: absolute;
+  inset: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid rgba(180, 147, 100, 0.55);
+  outline: 1px solid rgba(180, 147, 100, 0.22);
+  outline-offset: 7px;
   pointer-events: none;
 }
 
@@ -1604,11 +1625,23 @@ body.envelope-locked { overflow: hidden; }
   font-size: 0.62rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: rgba(42, 33, 26, 0.7);     /* dark text reads well on champagne */
-  margin-top: 2.5rem;
+  color: rgba(42, 33, 26, 0.7);
+  margin-top: 2.25rem;
   font-weight: 400;
   animation: envelopeHintPulse 2.4s ease-in-out infinite;
 }
+
+/* Botanical ornaments above/below the envelope */
+.envelope-stage__ornament {
+  width: clamp(170px, 28vw, 240px);
+  height: auto;
+  color: var(--gold-dark);
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.envelope-stage__ornament--top    { margin-bottom: 2.25rem; }
+.envelope-stage__ornament--bottom { margin-top: 2rem; transform: scaleY(-1); }
 .envelope-stage__hint.is-hidden { animation: none; opacity: 0; transition: opacity 0.4s; }
 
 @keyframes envelopeHintPulse {

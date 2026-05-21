@@ -1,0 +1,9 @@
+{
+  "name": "boda-joffre-erin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Invitación de boda Joffre & Erin · 22 · 08 · 2026",
+  "dependencies": {
+    "motion": "^12.39.0"
+  }
+}

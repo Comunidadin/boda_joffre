@@ -31,12 +31,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body class="envelope-locked">
 
   <!-- ============ SOBRE / ENVELOPE INTRO ============ -->
   <div class="envelope-stage" id="envelope-stage" role="dialog" aria-label="Invitación de boda Joffre y Erin">
+
+    <!-- Ornamento botánico superior -->
+    <svg class="envelope-stage__ornament envelope-stage__ornament--top" viewBox="0 0 220 60" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 30 H 90"/>
+        <path d="M130 30 H 210"/>
+        <path d="M95 30 Q 100 22, 110 30 T 125 30"/>
+        <circle cx="110" cy="30" r="1.8" fill="currentColor"/>
+        <!-- Hojitas -->
+        <path d="M75 30 q 3 -7, 10 -8 q -1 6, -8 10"/>
+        <path d="M75 30 q 3  7, 10  8 q -1 -6, -8 -10"/>
+        <path d="M145 30 q -3 -7, -10 -8 q 1 6, 8 10"/>
+        <path d="M145 30 q -3  7, -10  8 q 1 -6, 8 -10"/>
+      </g>
+    </svg>
+
     <button class="envelope" id="envelope" type="button" aria-label="Abrir invitación">
       <span class="envelope__shadow" aria-hidden="true"></span>
 
@@ -74,6 +90,20 @@
     </button>
 
     <p class="envelope-stage__hint" id="envelope-hint">Toca para abrir</p>
+
+    <!-- Ornamento botánico inferior (espejo del superior) -->
+    <svg class="envelope-stage__ornament envelope-stage__ornament--bottom" viewBox="0 0 220 60" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 30 H 90"/>
+        <path d="M130 30 H 210"/>
+        <path d="M95 30 Q 100 38, 110 30 T 125 30"/>
+        <circle cx="110" cy="30" r="1.8" fill="currentColor"/>
+        <path d="M75 30 q 3 -7, 10 -8 q -1 6, -8 10"/>
+        <path d="M75 30 q 3  7, 10  8 q -1 -6, -8 -10"/>
+        <path d="M145 30 q -3 -7, -10 -8 q 1 6, 8 10"/>
+        <path d="M145 30 q -3  7, -10  8 q 1 -6, 8 -10"/>
+      </g>
+    </svg>
   </div>
 
   <!-- ============ MUSIC PLAYER ============ -->
@@ -366,6 +396,11 @@
         </label>
       </fieldset>
 
+      <label class="form-row__full">
+        <span>Alergias o restricciones alimentarias</span>
+        <textarea name="alergias" rows="2" placeholder="Opcional — cuéntanos si tienes alguna alergia o restricción"></textarea>
+      </label>
+
       <button type="submit" class="rsvp__submit" id="rsvp-submit">Confirmar asistencia</button>
       <p class="rsvp__success" id="rsvp-success" hidden>Gracias por confirmar. Nos vemos el 22 de agosto. ♡</p>
       <p class="rsvp__error"   id="rsvp-error"   hidden>Hubo un problema enviando tu respuesta. Inténtalo de nuevo.</p>
@@ -380,6 +415,7 @@
     <p class="footer__quote">"Y vivieron felices, escribiendo cada día su propia historia."</p>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="vendor/motion.js?v=12.39.0"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

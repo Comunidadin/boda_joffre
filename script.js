@@ -7,34 +7,75 @@
   const stage    = document.getElementById('envelope-stage');
   const envelope = document.getElementById('envelope');
   const hint     = document.getElementById('envelope-hint');
-  if (!stage || !envelope) {
-    // No envelope in DOM — nothing to do
-    return;
-  }
+  if (!stage || !envelope) return;
 
   let isOpened = false;
+
+  // Try to start the background music. Done as part of the click handler so
+  // it counts as a valid user gesture under the browser's autoplay policy.
+  function startMusic() {
+    const bgm = document.getElementById('bgm');
+    if (bgm) bgm.play().catch(() => { /* blocked — user can press the floating button */ });
+  }
+
+  function cleanup() {
+    document.body.classList.remove('envelope-locked');
+    stage.remove();
+  }
+
+  async function openWithMotion() {
+    const { animate } = window.Motion;
+
+    // 1. Sello: pequeño "pop" y se quiebra hacia abajo
+    animate(
+      '.envelope__seal',
+      { scale: [1, 1.12, 0.78], opacity: [1, 1, 0], y: [0, -4, 10] },
+      { duration: 0.55, ease: 'easeIn' }
+    );
+
+    // 2. Solapa se abre con spring (con leve overshoot)
+    await animate(
+      '.envelope__flap',
+      { rotateX: [0, -178] },
+      { duration: 1.0, delay: 0.18, type: 'spring', bounce: 0.18 }
+    ).finished;
+
+    // 3. La carta sube como si la sacaras a mano (spring suave con un poco de inclinación)
+    await animate(
+      '.envelope__letter',
+      { y: ['0%', '-110%'], rotate: [0, -0.6, 0.6, 0] },
+      { duration: 1.15, type: 'spring', bounce: 0.22 }
+    ).finished;
+
+    // 4. Pequeña pausa para que se "lea" la carta
+    await new Promise(r => setTimeout(r, 380));
+
+    // 5. Fade del overlay y limpieza
+    await animate(stage, { opacity: 0 }, { duration: 0.7, ease: 'easeOut' }).finished;
+    cleanup();
+  }
+
+  function openWithCssFallback() {
+    envelope.classList.add('is-opening');
+    setTimeout(() => stage.classList.add('is-revealed'), 1700);
+    setTimeout(cleanup, 2700);
+  }
 
   function openEnvelope() {
     if (isOpened) return;
     isOpened = true;
 
-    envelope.classList.add('is-opening');
     if (hint) hint.classList.add('is-hidden');
+    startMusic();
 
-    // Try to start music — this click counts as a valid user gesture
-    const bgm = document.getElementById('bgm');
-    if (bgm) {
-      bgm.play().catch(() => { /* el navegador puede bloquear; el usuario tendrá el botón */ });
+    if (window.Motion && typeof window.Motion.animate === 'function') {
+      openWithMotion().catch((err) => {
+        console.warn('Motion falló, usando CSS:', err);
+        openWithCssFallback();
+      });
+    } else {
+      openWithCssFallback();
     }
-
-    // After the open animation, fade the stage and unlock the page
-    setTimeout(() => {
-      stage.classList.add('is-revealed');
-      document.body.classList.remove('envelope-locked');
-    }, 1700);
-
-    // Remove the overlay from the DOM after fade
-    setTimeout(() => { stage.remove(); }, 2700);
   }
 
   // Listen on BOTH the button and the whole stage as a safety net
