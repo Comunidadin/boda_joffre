@@ -1643,32 +1643,28 @@ body.envelope-locked { overflow: hidden; }
 .envelope-stage__ornament--top    { margin-bottom: 2.25rem; }
 .envelope-stage__ornament--bottom { margin-top: 2rem; transform: scaleY(-1); }
 
-/* Móvil: el sobre llena la pantalla — compactamos paddings, marco y ornamentos */
+/* Móvil: el sobre domina la pantalla — sin ornamentos, paddings mínimos, aspect más vertical */
 @media (max-width: 640px) {
   .envelope-stage {
-    padding: 0.75rem;
+    padding: 0.5rem;
   }
   .envelope-stage::after {
-    inset: 0.75rem;
-    outline-offset: 4px;
+    inset: 0.5rem;
+    outline-offset: 3px;
   }
-  .envelope-stage__ornament {
-    width: clamp(120px, 36vw, 170px);
-    opacity: 0.55;
+  .envelope-stage__ornament { display: none; }
+
+  .envelope {
+    /* Aspect más vertical (5/8) acorde a una pantalla de móvil */
+    aspect-ratio: 5 / 8;
+    width: min(95vw, calc(82vh * 5 / 8));
   }
-  .envelope-stage__ornament--top    { margin-bottom: 1.1rem; }
-  .envelope-stage__ornament--bottom { margin-top: 1.1rem; }
+
   .envelope-stage__hint {
     margin-top: 1.25rem;
     font-size: 0.58rem;
     letter-spacing: 0.45em;
   }
-}
-
-/* Pantallas muy bajas: ocultamos ornamentos para que el sobre respire */
-@media (max-height: 680px) {
-  .envelope-stage__ornament { display: none; }
-  .envelope-stage__hint { margin-top: 1rem; }
 }
 .envelope-stage__hint.is-hidden { animation: none; opacity: 0; transition: opacity 0.4s; }
 
