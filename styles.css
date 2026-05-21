@@ -1655,13 +1655,13 @@ body.envelope-locked { overflow: hidden; }
   .envelope-stage__ornament { display: none; }
 
   .envelope {
-    /* Aspect más vertical (5/8) acorde a una pantalla de móvil */
-    aspect-ratio: 5 / 8;
-    width: min(95vw, calc(82vh * 5 / 8));
+    /* Aspect mucho más vertical (4/7) para llenar la pantalla del móvil */
+    aspect-ratio: 4 / 7;
+    width: min(98vw, calc(88vh * 4 / 7));
   }
 
   .envelope-stage__hint {
-    margin-top: 1.25rem;
+    margin-top: 0.9rem;
     font-size: 0.58rem;
     letter-spacing: 0.45em;
   }
