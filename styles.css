@@ -1643,38 +1643,7 @@ body.envelope-locked { overflow: hidden; }
 .envelope-stage__ornament--top    { margin-bottom: 2.25rem; }
 .envelope-stage__ornament--bottom { margin-top: 2rem; transform: scaleY(-1); }
 
-/* Móvil: el sobre ocupa la pantalla completa, edge to edge */
-@media (max-width: 640px) {
-  .envelope-stage {
-    padding: 0;
-  }
-  .envelope-stage::after  { display: none; }
-  .envelope-stage__ornament { display: none; }
-  .envelope__shadow { display: none; }
-
-  .envelope {
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;            /* viewport dinámico para evitar saltos al aparecer/ocultar la barra del navegador */
-    aspect-ratio: auto;
-    border-radius: 0;
-  }
-  .envelope__back { border-radius: 0; }
-
-  /* "Toca para abrir" como overlay sobre el sobre */
-  .envelope-stage__hint {
-    position: absolute;
-    left: 50%;
-    bottom: 2.25rem;
-    transform: translateX(-50%);
-    margin: 0;
-    color: rgba(245, 235, 200, 0.88);
-    font-size: 0.58rem;
-    letter-spacing: 0.5em;
-    z-index: 10;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
-  }
-}
+/* (overrides móviles definidos al final del bloque envelope para ganar en cascada) */
 .envelope-stage__hint.is-hidden { animation: none; opacity: 0; transition: opacity 0.4s; }
 
 @keyframes envelopeHintPulse {
@@ -1952,6 +1921,40 @@ body.envelope-locked { overflow: hidden; }
 
 /* Allow letter to overflow envelope top when sliding out */
 .envelope { overflow: visible; }
+
+/* ====== MÓVIL: el sobre ocupa la pantalla completa, edge to edge ====== */
+@media (max-width: 640px) {
+  .envelope-stage {
+    padding: 0;
+  }
+  .envelope-stage::after    { display: none; }
+  .envelope-stage__ornament { display: none; }
+  .envelope__shadow         { display: none; }
+
+  .envelope {
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .envelope__back { border-radius: 0; }
+
+  /* "Toca para abrir" como overlay sobre el sobre */
+  .envelope-stage__hint {
+    position: absolute;
+    left: 50%;
+    bottom: 2.25rem;
+    transform: translateX(-50%);
+    margin: 0;
+    color: rgba(245, 235, 200, 0.88);
+    font-size: 0.58rem;
+    letter-spacing: 0.5em;
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+}
 
 /* Reduced-motion fallback: skip animations, just fade away */
 @media (prefers-reduced-motion: reduce) {
