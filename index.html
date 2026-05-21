@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body class="envelope-locked">
 
@@ -56,22 +56,8 @@
     <button class="envelope" id="envelope" type="button" aria-label="Abrir invitación">
       <span class="envelope__shadow" aria-hidden="true"></span>
 
+      <!-- Interior oscuro del sobre (visible cuando los pliegues se abren) -->
       <span class="envelope__back" aria-hidden="true"></span>
-
-      <!-- Cuerpo del sobre (parte frontal con el sello) -->
-      <span class="envelope__front" aria-hidden="true">
-        <span class="envelope__corner envelope__corner--tl"></span>
-        <span class="envelope__corner envelope__corner--tr"></span>
-        <span class="envelope__corner envelope__corner--bl"></span>
-        <span class="envelope__corner envelope__corner--br"></span>
-
-        <span class="envelope__monogram">
-          <span class="envelope__monogram-line">Joffre</span>
-          <span class="envelope__monogram-amp">&amp;</span>
-          <span class="envelope__monogram-line">Erin</span>
-        </span>
-        <span class="envelope__date-line">22 · 08 · 2026</span>
-      </span>
 
       <!-- Carta que sale del sobre al abrirlo -->
       <span class="envelope__letter" aria-hidden="true">
@@ -80,10 +66,48 @@
         <span class="envelope__letter-meta">22 · 08 · 2026</span>
       </span>
 
-      <!-- Solapa (flap) que se abre -->
-      <span class="envelope__flap" aria-hidden="true"></span>
+      <!-- Cuatro solapas triangulares que se encuentran en el centro -->
+      <span class="envelope__flap envelope__flap--bottom" aria-hidden="true"></span>
+      <span class="envelope__flap envelope__flap--left"   aria-hidden="true"></span>
+      <span class="envelope__flap envelope__flap--right"  aria-hidden="true"></span>
+      <span class="envelope__flap envelope__flap--top"    aria-hidden="true"></span>
 
-      <!-- Sello de cera centrado en la unión solapa/cuerpo -->
+      <!-- Espiga de trigo seco detrás del sello -->
+      <span class="envelope__sprig" aria-hidden="true">
+        <svg viewBox="0 0 50 240" preserveAspectRatio="xMidYMid meet">
+          <g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Tallo largo -->
+            <line x1="25" y1="62" x2="25" y2="236" stroke-width="1.2"/>
+            <!-- Aristas (awns) -->
+            <g stroke-width="0.7" fill="none" opacity="0.9">
+              <line x1="25" y1="8"  x2="15" y2="0"/>
+              <line x1="25" y1="8"  x2="25" y2="-3"/>
+              <line x1="25" y1="8"  x2="35" y2="0"/>
+              <line x1="22" y1="18" x2="11" y2="6"/>
+              <line x1="28" y1="18" x2="39" y2="6"/>
+              <line x1="20" y1="30" x2="7"  y2="20"/>
+              <line x1="30" y1="30" x2="43" y2="20"/>
+              <line x1="19" y1="42" x2="5"  y2="35"/>
+              <line x1="31" y1="42" x2="45" y2="35"/>
+              <line x1="20" y1="54" x2="7"  y2="50"/>
+              <line x1="30" y1="54" x2="43" y2="50"/>
+            </g>
+            <!-- Granos -->
+            <ellipse cx="22" cy="14" rx="2.3" ry="5"   />
+            <ellipse cx="28" cy="14" rx="2.3" ry="5"   />
+            <ellipse cx="21" cy="24" rx="2.5" ry="5.2" />
+            <ellipse cx="29" cy="24" rx="2.5" ry="5.2" />
+            <ellipse cx="20" cy="34" rx="2.6" ry="5.4" />
+            <ellipse cx="30" cy="34" rx="2.6" ry="5.4" />
+            <ellipse cx="20" cy="44" rx="2.5" ry="5.2" />
+            <ellipse cx="30" cy="44" rx="2.5" ry="5.2" />
+            <ellipse cx="22" cy="54" rx="2.3" ry="4.8" />
+            <ellipse cx="28" cy="54" rx="2.3" ry="4.8" />
+          </g>
+        </svg>
+      </span>
+
+      <!-- Sello de cera dorado en el centro -->
       <span class="envelope__seal" aria-hidden="true">
         <span class="envelope__seal-mono">J<i>&amp;</i>E</span>
       </span>
@@ -416,6 +440,6 @@
   </footer>
 
   <script src="vendor/motion.js?v=12.39.0"></script>
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

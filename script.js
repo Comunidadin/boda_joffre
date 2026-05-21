@@ -26,28 +26,35 @@
   async function openWithMotion() {
     const { animate } = window.Motion;
 
-    // 1. Sello: pequeño "pop" y se quiebra hacia abajo
+    // 1. Sello: "pop" y se quiebra hacia abajo
     animate(
       '.envelope__seal',
-      { scale: [1, 1.12, 0.78], opacity: [1, 1, 0], y: [0, -4, 10] },
+      { scale: [1, 1.14, 0.78], opacity: [1, 1, 0], y: [0, -4, 12] },
       { duration: 0.55, ease: 'easeIn' }
     );
 
-    // 2. Solapa se abre con spring (con leve overshoot)
-    await animate(
-      '.envelope__flap',
-      { rotateX: [0, -178] },
-      { duration: 1.0, delay: 0.18, type: 'spring', bounce: 0.18 }
-    ).finished;
+    // 1b. La espiga se desvanece junto con el sello
+    animate(
+      '.envelope__sprig',
+      { opacity: [1, 0], y: [0, 6] },
+      { duration: 0.5, delay: 0.1, ease: 'easeOut' }
+    );
 
-    // 3. La carta sube como si la sacaras a mano (spring suave con un poco de inclinación)
+    // 2. Las 4 solapas se abren hacia afuera (top/bottom giran en X, left/right en Y)
+    const flapOpts = { duration: 1.05, delay: 0.22, type: 'spring', bounce: 0.16 };
+    animate('.envelope__flap--top',    { rotateX: [0, -178] }, flapOpts);
+    animate('.envelope__flap--bottom', { rotateX: [0, 178]  }, flapOpts);
+    animate('.envelope__flap--left',   { rotateY: [0, 178]  }, flapOpts);
+    await animate('.envelope__flap--right', { rotateY: [0, -178] }, flapOpts).finished;
+
+    // 3. La carta sube como si la sacaras a mano
     await animate(
       '.envelope__letter',
-      { y: ['0%', '-110%'], rotate: [0, -0.6, 0.6, 0] },
+      { y: ['0%', '-130%'], rotate: [0, -0.6, 0.6, 0] },
       { duration: 1.15, type: 'spring', bounce: 0.22 }
     ).finished;
 
-    // 4. Pequeña pausa para que se "lea" la carta
+    // 4. Pausa breve para que se "lea" la carta
     await new Promise(r => setTimeout(r, 380));
 
     // 5. Fade del overlay y limpieza
