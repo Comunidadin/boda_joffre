@@ -213,12 +213,13 @@ img { max-width: 100%; display: block; }
 
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   text-align: center;
-  padding: clamp(3.5rem, 7vh, 6rem) 1.5rem 4rem;
+  padding: clamp(4rem, 8vh, 7rem) 1.5rem 6rem;
   position: relative;
   overflow: hidden;
   color: var(--bg-soft);
@@ -229,22 +230,26 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background-image: url('images/hero.png');
   background-size: cover;
-  background-position: center 70%;
-  filter: saturate(1.12) contrast(1.04);
+  background-position: center 60%;
+  filter: saturate(1.08) contrast(1.05);
   z-index: 0;
-  transform: scale(1.18) translateX(-7%);
-  animation: heroZoom 26s ease-out forwards;
+  transform: scale(1.05);
+  animation: heroZoom 32s ease-in-out infinite alternate;
 }
 
 @keyframes heroZoom {
-  from { transform: scale(1.28) translateX(-7%); }
-  to   { transform: scale(1.18) translateX(-7%); }
+  from { transform: scale(1.05) translate(0, 0); }
+  to   { transform: scale(1.15) translate(-1.5%, -1%); }
 }
 
 @media (max-width: 700px) {
   .hero__bg {
-    transform: scale(1.05) translateX(0);
-    animation: none;
+    background-position: 55% 60%;
+    /* Ken Burns más sutil en móvil */
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1.10); }
   }
 }
 
@@ -252,17 +257,19 @@ img { max-width: 100%; display: block; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 45% at 50% 28%,
-      rgba(15, 10, 6, 0.55) 0%,
-      rgba(15, 10, 6, 0.20) 60%,
-      rgba(15, 10, 6, 0)    100%
-    ),
-    linear-gradient(to bottom,
-      rgba(15, 10, 6, 0.45) 0%,
-      rgba(15, 10, 6, 0.15) 30%,
-      rgba(15, 10, 6, 0)    55%,
-      rgba(15, 10, 6, 0)    80%,
+    /* Vignette suave alrededor */
+    radial-gradient(ellipse at center,
+      rgba(15, 10, 6, 0)    35%,
+      rgba(15, 10, 6, 0.18) 70%,
       rgba(15, 10, 6, 0.55) 100%
+    ),
+    /* Gradiente vertical: refuerza arriba y abajo para legibilidad */
+    linear-gradient(to bottom,
+      rgba(15, 10, 6, 0.40) 0%,
+      rgba(15, 10, 6, 0.10) 25%,
+      rgba(15, 10, 6, 0)    50%,
+      rgba(15, 10, 6, 0.20) 75%,
+      rgba(15, 10, 6, 0.65) 100%
     );
   z-index: 1;
 }
@@ -302,58 +309,65 @@ img { max-width: 100%; display: block; }
 .hero__title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(3rem, 7.5vw, 6rem);
-  line-height: 1;
-  letter-spacing: 0.005em;
   color: var(--bg-soft);
   margin: 0;
-  display: inline-flex;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0.35em;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
 }
 
-.hero__name { display: inline-block; font-style: italic; }
+.hero__name {
+  display: block;
+  font-style: italic;
+  font-size: clamp(4.5rem, 14vw, 10rem);
+  font-weight: 300;
+}
 
 .hero__amp {
   font-family: var(--font-script);
-  font-size: 1.25em;
+  font-size: clamp(4rem, 11vw, 8rem);
   color: #F5D9B8;
   font-style: italic;
-  display: inline-block;
   font-weight: 400;
-  line-height: 0.8;
+  line-height: 0.6;
+  letter-spacing: 0;
   text-shadow:
     0 1px 2px  rgba(0, 0, 0, 0.9),
-    0 2px 12px rgba(0, 0, 0, 0.75),
-    0 0 28px   rgba(0, 0, 0, 0.55);
+    0 2px 14px rgba(0, 0, 0, 0.75),
+    0 0 36px   rgba(0, 0, 0, 0.55);
+  margin: 0.05em 0 0.05em;
+  display: block;
+  /* Pequeño ajuste óptico para el script */
   position: relative;
-  top: 0.12em;
+  top: -0.02em;
 }
 
 .hero__subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
   color: var(--bg-soft);
-  margin-top: 1.4rem;
+  margin-top: 1.8rem;
   font-weight: 300;
-  letter-spacing: 0.04em;
-  opacity: 0.95;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+  max-width: 32ch;
+  line-height: 1.5;
 }
 
 .hero__date {
-  margin-top: 2.75rem;
+  margin-top: 3.25rem;
   font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-  letter-spacing: 0.55em;
+  font-size: clamp(0.95rem, 1.5vw, 1.18rem);
+  letter-spacing: 0.65em;
   color: var(--bg-soft);
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 1rem 2rem;
+  gap: 1rem;
+  padding: 1.15rem 2.4rem;
   position: relative;
   font-weight: 400;
   font-variant-numeric: lining-nums tabular-nums;
@@ -364,9 +378,8 @@ img { max-width: 100%; display: block; }
   position: absolute;
   left: 0;
   right: 0;
-  height: 3px;
-  border-top: 1px solid rgba(245, 239, 226, 0.55);
-  border-bottom: 1px solid rgba(245, 239, 226, 0.55);
+  height: 1px;
+  background: rgba(245, 239, 226, 0.45);
   pointer-events: none;
 }
 .hero__date::before { top: 0; }
