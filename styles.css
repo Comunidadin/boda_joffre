@@ -309,53 +309,46 @@ img { max-width: 100%; display: block; }
 .hero__title {
   font-family: var(--font-serif);
   font-weight: 300;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.005em;
   color: var(--bg-soft);
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-flex;
+  align-items: baseline;
   justify-content: center;
-  line-height: 0.92;
-  letter-spacing: -0.005em;
+  gap: 0.35em;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
-.hero__name {
-  display: block;
-  font-style: italic;
-  font-size: clamp(4.5rem, 14vw, 10rem);
-  font-weight: 300;
-}
+.hero__name { display: inline-block; font-style: italic; }
 
 .hero__amp {
   font-family: var(--font-script);
-  font-size: clamp(4rem, 11vw, 8rem);
+  font-size: 1.25em;
   color: #F5D9B8;
   font-style: italic;
+  display: inline-block;
   font-weight: 400;
-  line-height: 0.6;
-  letter-spacing: 0;
+  line-height: 0.8;
   text-shadow:
     0 1px 2px  rgba(0, 0, 0, 0.9),
-    0 2px 14px rgba(0, 0, 0, 0.75),
-    0 0 36px   rgba(0, 0, 0, 0.55);
-  margin: 0.05em 0 0.05em;
-  display: block;
-  /* Pequeño ajuste óptico para el script */
+    0 2px 12px rgba(0, 0, 0, 0.75),
+    0 0 28px   rgba(0, 0, 0, 0.55);
   position: relative;
-  top: -0.02em;
+  top: 0.12em;
 }
 
 .hero__subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
   color: var(--bg-soft);
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
   font-weight: 300;
-  letter-spacing: 0.06em;
-  opacity: 0.9;
-  max-width: 32ch;
-  line-height: 1.5;
+  letter-spacing: 0.04em;
+  opacity: 0.95;
 }
 
 .hero__date {
