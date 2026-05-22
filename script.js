@@ -192,7 +192,7 @@ window.addEventListener('load', () => {
 
 // ---- RSVP form → Google Sheets ----
 // Pega aquí tu URL de Apps Script (instrucciones al final del HTML).
-const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwBtEbGZVr49iadksPO3-TXku1KvUMttA7Cd8vbuxvbQOK648_kdSA-KPHpMd5okdvK4A/exec';
+const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwbBATfLIC4_3gPdIklUiXaQrEe7YnMS1gNsvfWm2-L2L_Khve9BVzOmEVY9AQ4iNgfFw/exec';
 
 const form     = document.getElementById('rsvp-form');
 const submitBtn= document.getElementById('rsvp-submit');
