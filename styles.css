@@ -230,7 +230,8 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background-image: url('images/hero.png');
   background-size: cover;
-  background-position: center 60%;
+  /* La pareja está en la parte derecha de la foto — desplazamos la composición para que queden centrados */
+  background-position: 70% 55%;
   filter: saturate(1.08) contrast(1.05);
   z-index: 0;
   transform: scale(1.05);
@@ -244,12 +245,15 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 700px) {
   .hero__bg {
-    background-position: 55% 60%;
+    background-position: 65% 50%;
     /* Ken Burns más sutil en móvil */
   }
   @keyframes heroZoom {
     from { transform: scale(1.04); }
     to   { transform: scale(1.10); }
+  }
+  .hero__content {
+    transform: translateY(-8vh);
   }
 }
 
@@ -281,6 +285,8 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   align-items: center;
   max-width: 760px;
+  /* Subimos el contenido del centro hacia arriba para dejar respirar a la pareja */
+  transform: translateY(-12vh);
   text-shadow:
     0 1px 2px  rgba(0, 0, 0, 0.85),
     0 2px 16px rgba(0, 0, 0, 0.65),
@@ -1973,7 +1979,7 @@ body.envelope-locked { overflow: hidden; }
 
 @media (max-width: 700px) {
   .hero { padding-top: 7vh; }
-  .hero__bg { background-position: 62% 80%; }
+  .hero__bg { background-position: 65% 50%; }
 }
 
 @media (max-width: 600px) {
