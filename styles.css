@@ -233,20 +233,20 @@ img { max-width: 100%; display: block; }
   background-position: 50% 55%;
   filter: saturate(1.08) contrast(1.05);
   z-index: 0;
-  /* La pareja está en la parte derecha de la foto: zoom 2x + traslación a la izquierda para centrarlos */
-  transform: scale(2) translateX(-25%);
+  /* La pareja está en ~57% del ancho de la foto: zoom suave + leve traslación para centrarlos */
+  transform: scale(1.4) translateX(-8%);
   animation: heroZoom 32s ease-in-out infinite alternate;
 }
 
 @keyframes heroZoom {
-  from { transform: scale(2)    translateX(-25%); }
-  to   { transform: scale(2.15) translateX(-23%); }
+  from { transform: scale(1.4)  translateX(-8%); }
+  to   { transform: scale(1.5)  translateX(-7%); }
 }
 
 @media (max-width: 700px) {
   .hero__bg {
     /* En vertical hay mucho overflow horizontal, basta con bg-position */
-    background-position: 80% 50%;
+    background-position: 60% 50%;
     transform: scale(1.05);
     animation-name: heroZoomMobile;
   }
